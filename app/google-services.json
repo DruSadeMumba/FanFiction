@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "607450380340",
+    "project_id": "fanfiction-book-club",
+    "storage_bucket": "fanfiction-book-club.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607450380340:android:a962ea40c369fe74d23261",
+        "android_client_info": {
+          "package_name": "com.drusade.fanfictionbookclub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607450380340-1vse1eci7unihs0l30g55qklj8h3dr6p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.drusade.fanfictionbookclub",
+            "certificate_hash": "8e83805bb72650decf134df5c50b1d4b099b7bc4"
+          }
+        },
+        {
+          "client_id": "607450380340-d9pl19j03i4hj60n7rfdhc4a4mb6tev1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjRWrKIEQ3Xj1NL6gvjP2L1XdVVR-qHWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607450380340-d9pl19j03i4hj60n7rfdhc4a4mb6tev1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
