@@ -1,8 +1,10 @@
-package com.drusade.fanfictionbookclub;
+package com.drusade.fanfictionbookclub.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.drusade.fanfictionbookclub.R;
 
 public class MainActivity extends AppCompatActivity {
 

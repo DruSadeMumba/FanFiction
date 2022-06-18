@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CreateAccountActivity">
+    tools:context=".ui.LoginActivity">
 
     <ImageView
         android:id="@+id/loginImage"
@@ -49,30 +49,7 @@
             app:layout_constraintVertical_bias="0" />
 
         <EditText
-            android:id="@+id/userNameEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edit_bg"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
-            android:drawablePadding="20dp"
-            android:fontFamily="@font/poppins"
-            android:hint="Jane Doe"
-            android:inputType="text"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:textColor="@color/colorTextIcons"
-            android:textColorHint="@color/colorPrimaryText"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.15"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/userEmailEditText"
+            android:id="@+id/userLoginEmailEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_bg"
@@ -95,7 +72,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/userPasswordEditText"
+            android:id="@+id/userLoginPasswordEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_bg"
@@ -117,31 +94,8 @@
             app:layout_constraintVertical_bias="0.45"
             app:layout_constraintWidth_percent=".8" />
 
-        <EditText
-            android:id="@+id/confirmPasswordEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edit_bg"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
-            android:drawablePadding="20dp"
-            android:fontFamily="@font/poppins"
-            android:hint="Lepass@1234"
-            android:inputType="textPassword"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:textColor="@color/colorTextIcons"
-            android:textColorHint="@color/colorPrimaryText"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6"
-            app:layout_constraintWidth_percent=".8" />
-
         <Button
-            android:id="@+id/signUpButton"
+            android:id="@+id/logInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_bg"
@@ -156,15 +110,15 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.75"
+            app:layout_constraintVertical_bias="0.65"
             app:layout_constraintWidth_percent=".8" />
 
         <TextView
-            android:id="@+id/loginTextView"
+            android:id="@+id/createAccountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:text="Or Log in here..."
+            android:text="Or Sign up here..."
             android:textColor="@color/colorAccent"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -172,7 +126,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.82"
+            app:layout_constraintVertical_bias="0.75"
             app:layout_constraintWidth_percent=".8" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -220,5 +174,6 @@
             app:layout_constraintVertical_bias="0.97" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
