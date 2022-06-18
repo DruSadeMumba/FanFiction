@@ -5,8 +5,9 @@
       <map>
         <entry key="app/src/main/res/drawable/btn_bg.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/button_bg.xml" value="0.143" />
+        <entry key="app/src/main/res/drawable/edit_bg.xml" value="0.2305" />
         <entry key="app/src/main/res/drawable/view_bg.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_create_acccount.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_create_acccount.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24635416666666668" />
       </map>
     </option>

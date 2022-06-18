@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateAcccountActivity">
+    tools:context=".CreateAccountActivity">
 
     <ImageView
         android:id="@+id/loginImage"
@@ -38,7 +38,7 @@
             android:fontFamily="@font/poppins"
             android:paddingTop="20dp"
             android:text="FanFiction Book Club"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimaryText"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -62,7 +62,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:textColor="@color/colorTextIcons"
-            android:textColorHint="@color/colorSecondaryLight"
+            android:textColorHint="@color/colorPrimaryText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -85,7 +85,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:textColor="@color/colorTextIcons"
-            android:textColorHint="@color/colorSecondaryLight"
+            android:textColorHint="@color/colorPrimaryText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -108,7 +108,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:textColor="@color/colorTextIcons"
-            android:textColorHint="@color/colorSecondaryLight"
+            android:textColorHint="@color/colorPrimaryText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -131,7 +131,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:textColor="@color/colorTextIcons"
-            android:textColorHint="@color/colorSecondaryLight"
+            android:textColorHint="@color/colorPrimaryText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -148,6 +148,7 @@
             android:elevation="50dp"
             android:fontFamily="@font/poppins"
             android:text="Sign Up"
+            android:textColorHint="@color/colorPrimaryText"
             android:textAllCaps="false"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -175,7 +176,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/google"
+            android:id="@+id/googleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorSecondaryLight"
@@ -189,7 +190,7 @@
             app:layout_constraintVertical_bias="0.97" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/facebook"
+            android:id="@+id/facebookButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -197,14 +198,14 @@
             android:elevation="35dp"
             android:src="@drawable/facebook"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/google"
+            app:layout_constraintEnd_toStartOf="@id/googleButton"
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.97" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/twitter"
+            android:id="@+id/twitterButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -214,7 +215,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.11"
-            app:layout_constraintStart_toEndOf="@id/google"
+            app:layout_constraintStart_toEndOf="@id/googleButton"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.97" />
 

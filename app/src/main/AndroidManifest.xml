@@ -17,7 +17,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateAcccountActivity"
+            android:name=".CreateAccountActivity"
             android:theme="@style/Theme.FanfictionBookClub.NoActionBar"
             android:exported="true">
             <intent-filter>
