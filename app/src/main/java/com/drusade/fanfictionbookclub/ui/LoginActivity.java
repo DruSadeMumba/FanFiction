@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.drusade.fanfictionbookclub.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,7 +28,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    public static final String TAG = LoginActivity.class.getSimpleName();
+    float v = 0;
 
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.userLoginEmailEditText) EditText mUserLoginEmailEditText;
@@ -44,6 +45,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.createAccountTextView) TextView mCreateAccountTextView;
 
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.googleButton) FloatingActionButton mGoogleButton;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.facebookButton) FloatingActionButton mFacebookButton;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.twitterButton) FloatingActionButton mTwitterButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +66,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
-
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -68,6 +77,35 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         };
+
+        mTextViewTitle.setTranslationX(300);
+        mUserLoginEmailEditText.setTranslationX(300);
+        mUserLoginPasswordEditText.setTranslationX(300);
+        mLoginButton.setTranslationY(300);
+        mCreateAccountTextView.setTranslationY(300);
+        mFacebookButton.setTranslationX(300);
+        mTwitterButton.setTranslationX(300);
+        mGoogleButton.setTranslationY(300);
+
+
+        mTextViewTitle.setAlpha(v);
+        mUserLoginEmailEditText.setAlpha(v);
+        mUserLoginPasswordEditText.setAlpha(v);
+        mLoginButton.setAlpha(v);
+        mCreateAccountTextView.setAlpha(v);
+        mFacebookButton.setAlpha(v);
+        mTwitterButton.setAlpha(v);
+        mGoogleButton.setAlpha(v);
+
+
+        mTextViewTitle.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+        mUserLoginEmailEditText.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(800).start();
+        mUserLoginPasswordEditText.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(1000).start();
+        mLoginButton.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(800).start();
+        mCreateAccountTextView.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(1000).start();
+        mFacebookButton.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+        mTwitterButton.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(800).start();
+        mGoogleButton.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(1000).start();
     }
 
     @Override

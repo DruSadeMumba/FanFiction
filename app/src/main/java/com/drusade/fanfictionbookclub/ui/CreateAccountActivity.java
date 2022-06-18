@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.drusade.fanfictionbookclub.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -55,6 +56,16 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.loginTextView) TextView mLoginTextView;
 
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.googleButton)
+    FloatingActionButton mGoogleButton;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.facebookButton) FloatingActionButton mFacebookButton;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.twitterButton) FloatingActionButton mTwitterButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +79,39 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         mSignUpButton.setOnClickListener(this);
 
         createAuthStateListener();
+
+        mTextViewTitle.setTranslationX(300);
+        mUserNameEditText.setTranslationX(300);
+        mUserEmailEditText.setTranslationX(300);
+        mUserPasswordEditText.setTranslationX(300);
+        mConfirmPasswordEditText.setTranslationX(300);
+        mSignUpButton.setTranslationY(300);
+        mLoginTextView.setTranslationY(300);
+        mFacebookButton.setTranslationX(300);
+        mTwitterButton.setTranslationX(300);
+        mGoogleButton.setTranslationY(300);
+
+        mTextViewTitle.setAlpha(v);
+        mUserNameEditText.setAlpha(v);
+        mUserEmailEditText.setAlpha(v);
+        mUserPasswordEditText.setAlpha(v);
+        mConfirmPasswordEditText.setAlpha(v);
+        mSignUpButton.setAlpha(v);
+        mLoginTextView.setAlpha(v);
+        mFacebookButton.setAlpha(v);
+        mTwitterButton.setAlpha(v);
+        mGoogleButton.setAlpha(v);
+
+        mTextViewTitle.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(400).start();
+        mUserNameEditText.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+        mUserEmailEditText.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(800).start();
+        mUserPasswordEditText.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(1000).start();
+        mConfirmPasswordEditText.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(1200).start();
+        mSignUpButton.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(1000).start();
+        mLoginTextView.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(1200).start();
+        mFacebookButton.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(800).start();
+        mTwitterButton.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(1000).start();
+        mGoogleButton.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(1200).start();
     }
 
     private boolean isValidEmail(String email) {
