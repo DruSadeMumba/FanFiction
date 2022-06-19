@@ -96,7 +96,7 @@
             android:drawableLeft="@drawable/ic_baseline_lock_24"
             android:drawablePadding="20dp"
             android:fontFamily="@font/poppins"
-            android:hint="Lepass@1234"
+            android:hint="Lepass1234?%"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
@@ -142,7 +142,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.701"
+            app:layout_constraintVertical_bias="0.7"
             app:layout_constraintWidth_percent=".8" />
 
         <TextView

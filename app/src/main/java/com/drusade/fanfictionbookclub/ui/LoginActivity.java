@@ -15,6 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.drusade.fanfictionbookclub.R;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -25,7 +31,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.OAuthProvider;
@@ -144,8 +152,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             SignInTwitter();
         }
         if (v == mFacebookButton){
-            Toast.makeText(LoginActivity.this, "Under Construction", Toast.LENGTH_SHORT).show();
+            SignInFaceBook();
         }
+    }
+
+    private void SignInFaceBook() {
+        Toast.makeText(LoginActivity.this, "Under construction", Toast.LENGTH_SHORT).show();
     }
 
     private void SignInTwitter() {
@@ -155,38 +167,38 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Task<AuthResult> pendingResultTask = mAuth.getPendingAuthResult();
         if (pendingResultTask != null) {
             pendingResultTask
-                    .addOnSuccessListener(
-                            new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                }
-                            })
-                    .addOnFailureListener(
-                            new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(LoginActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                .addOnSuccessListener(
+                    new OnSuccessListener<AuthResult>() {
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        }
+                    })
+                .addOnFailureListener(
+                    new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                             Toast.makeText(LoginActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
         else {
             mAuth
-                    .startActivityForSignInWithProvider(/* activity= */ this, provider.build())
-                    .addOnSuccessListener(
-                            new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                }
-                            })
-                    .addOnFailureListener(
-                            new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(LoginActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                .startActivityForSignInWithProvider(/* activity= */ this, provider.build())
+                .addOnSuccessListener(
+                    new OnSuccessListener<AuthResult>() {
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        }
+                    })
+                .addOnFailureListener(
+                    new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(LoginActivity.this, "Unable to sign in"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
 
     }
