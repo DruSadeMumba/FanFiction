@@ -21,11 +21,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.OAuthProvider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,8 +81,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mCreateAccountTextView.setOnClickListener(this);
         mLoginButton.setOnClickListener(this);
         mGoogleButton.setOnClickListener(this);
+        mTwitterButton.setOnClickListener(this);
+        mFacebookButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -102,7 +108,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mTwitterButton.setTranslationX(300);
         mGoogleButton.setTranslationY(300);
 
-
         mTextViewTitle.setAlpha(v);
         mUserLoginEmailEditText.setAlpha(v);
         mUserLoginPasswordEditText.setAlpha(v);
@@ -111,7 +116,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mFacebookButton.setAlpha(v);
         mTwitterButton.setAlpha(v);
         mGoogleButton.setAlpha(v);
-
 
         mTextViewTitle.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
         mUserLoginEmailEditText.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(800).start();
@@ -136,6 +140,55 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(v == mGoogleButton){
             SignInGoogle();
         }
+        if(v == mTwitterButton){
+            SignInTwitter();
+        }
+        if (v == mFacebookButton){
+            Toast.makeText(LoginActivity.this, "Under Construction", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void SignInTwitter() {
+        OAuthProvider.Builder provider = OAuthProvider.newBuilder("twitter.com");
+        provider.addCustomParameter("lang", "en");
+
+        Task<AuthResult> pendingResultTask = mAuth.getPendingAuthResult();
+        if (pendingResultTask != null) {
+            pendingResultTask
+                    .addOnSuccessListener(
+                            new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                }
+                            })
+                    .addOnFailureListener(
+                            new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(LoginActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+        }
+        else {
+            mAuth
+                    .startActivityForSignInWithProvider(/* activity= */ this, provider.build())
+                    .addOnSuccessListener(
+                            new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                }
+                            })
+                    .addOnFailureListener(
+                            new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(LoginActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+        }
+
     }
 
     private void loginWithPassword() {

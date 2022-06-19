@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Fanfiction Book Club</string>
+    <string name="twitter_consumer_key">rJkczSGc5wLqWLUCE644k3z8Z</string>
+    <string name="twitter_consumer_secret">jVhl14wHT0Y46q54CSlzbcdki60n3rAWt5X3AXGOdtCjSLeyS6</string>
 </resources>
