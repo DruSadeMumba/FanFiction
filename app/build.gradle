@@ -63,4 +63,7 @@ dependencies {
     //FirebaseUI
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.firebaseui:firebase-ui-database:7.1.1'
+
+    //Google Play
+    implementation 'com.google.android.gms:play-services-auth:20.2.0'
 }

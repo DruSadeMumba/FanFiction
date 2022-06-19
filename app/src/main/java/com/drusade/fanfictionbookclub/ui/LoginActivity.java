@@ -1,6 +1,7 @@
 package com.drusade.fanfictionbookclub.ui;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -14,6 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.drusade.fanfictionbookclub.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,6 +34,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    GoogleSignInOptions mGoogleSignOptions;
+    GoogleSignInClient mGoogleSignClient;
     float v = 0;
 
     @SuppressLint("NonConstantResourceId")
@@ -61,8 +69,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         ButterKnife.bind(this);
 
+        mGoogleSignOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        mGoogleSignClient = GoogleSignIn.getClient(this, mGoogleSignOptions);
+
         mCreateAccountTextView.setOnClickListener(this);
         mLoginButton.setOnClickListener(this);
+        mGoogleButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -118,6 +133,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (v == mLoginButton) {
             loginWithPassword();
         }
+        if(v == mGoogleButton){
+            SignInGoogle();
+        }
     }
 
     private void loginWithPassword() {
@@ -141,6 +159,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         }
                     }
                 });
+    }
+
+    private void SignInGoogle() {
+        Intent intent = mGoogleSignClient.getSignInIntent();
+        startActivityForResult(intent, 100);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 100){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                task.getResult(ApiException.class);
+                MainActivity();
+            } catch (ApiException e) {
+                Toast.makeText(this, "Unable to sign in", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void MainActivity(){
+        finish();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
