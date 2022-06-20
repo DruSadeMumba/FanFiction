@@ -1,22 +1,44 @@
 package com.drusade.fanfictionbookclub.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.drusade.fanfictionbookclub.R;
 import com.google.firebase.auth.FirebaseAuth;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.profPicImageView) ImageView mProfPicImageView;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.addProfPicButton) Button mAddProfPicButton;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.profNameTextView) ImageView mProfNameTextView;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.searchView) SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
+
     }
 
     @Override
