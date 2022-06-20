@@ -1,5 +1,6 @@
 package com.drusade.fanfictionbookclub.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
@@ -11,34 +12,60 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.drusade.fanfictionbookclub.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.profPicImageView) ImageView mProfPicImageView;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.addProfPicButton) Button mAddProfPicButton;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.profNameTextView) ImageView mProfNameTextView;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.searchView) SearchView mSearchView;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private TextView mProfNameTextView;
+    private ImageView mProfPicImageView;
+    private Button mAddProfPicButton;
+    private SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        mProfNameTextView = findViewById(R.id.profNameTextView);
+        mProfPicImageView = findViewById(R.id.profPicImageView);
+        mAddProfPicButton = findViewById(R.id.addProfPicButton);
+        mSearchView = findViewById(R.id.searchView);
 
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    mProfNameTextView.setText("Hello " + user.getDisplayName() + "!");
+                }
+                else {
 
+                }
+            }
+        };
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
     @Override
