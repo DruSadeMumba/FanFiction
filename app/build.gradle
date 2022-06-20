@@ -69,4 +69,12 @@ dependencies {
 
     //Google Play
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
+
+    //Parceler
+    implementation 'org.parceler:parceler-api:1.1.12'
+    annotationProcessor 'org.parceler:parceler:1.1.12'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 }

@@ -3,6 +3,7 @@ package com.drusade.fanfictionbookclub.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mProfPicImageView;
     private Button mAddProfPicButton;
     private SearchView mSearchView;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mProfPicImageView = findViewById(R.id.profPicImageView);
         mAddProfPicButton = findViewById(R.id.addProfPicButton);
         mSearchView = findViewById(R.id.searchView);
+        mRecyclerView = findViewById(R.id.recyclerView);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
