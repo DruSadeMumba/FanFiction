@@ -13,21 +13,21 @@ public class GoogleSearchResponse {
     @SerializedName("results")
     @Expose
     private List<Result> results = null;
-    @SerializedName("image_results")
-    @Expose
-    private List<Object> imageResults = null;
-    @SerializedName("total")
-    @Expose
-    private Integer total;
-    @SerializedName("answers")
-    @Expose
-    private List<Object> answers = null;
     @SerializedName("ts")
     @Expose
     private Double ts;
+    /*@SerializedName("image_results")
+    @Expose
+    private List<Object> imageResults = null;*/
+    @SerializedName("total")
+    @Expose
+    private Integer total;
+    /*@SerializedName("answers")
+    @Expose
+    private List<Object> answers = null;
     @SerializedName("device_type")
     @Expose
-    private Object deviceType;
+    private Object deviceType;*/
 
     /**
      * No args constructor for use in serialization
@@ -38,21 +38,20 @@ public class GoogleSearchResponse {
 
     /**
      * 
-     * @param deviceType
+
      * @param total
-     * @param imageResults
-     * @param answers
+
      * @param results
      * @param ts
      */
-    public GoogleSearchResponse(List<Result> results, List<Object> imageResults, Integer total, List<Object> answers, Double ts, Object deviceType) {
+    public GoogleSearchResponse(List<Result> results/*, List<Object> imageResults*/, Integer total/*, List<Object> answers*/, Double ts/*, Object deviceType*/) {
         super();
         this.results = results;
-        this.imageResults = imageResults;
+        /*this.imageResults = imageResults;*/
         this.total = total;
-        this.answers = answers;
         this.ts = ts;
-        this.deviceType = deviceType;
+        /*this.answers = answers;
+        this.deviceType = deviceType;*/
     }
 
     public List<Result> getResults() {
@@ -63,13 +62,13 @@ public class GoogleSearchResponse {
         this.results = results;
     }
 
-    public List<Object> getImageResults() {
+    /*public List<Object> getImageResults() {
         return imageResults;
     }
 
     public void setImageResults(List<Object> imageResults) {
         this.imageResults = imageResults;
-    }
+    }*/
 
     public Integer getTotal() {
         return total;
@@ -79,13 +78,13 @@ public class GoogleSearchResponse {
         this.total = total;
     }
 
-    public List<Object> getAnswers() {
+    /*public List<Object> getAnswers() {
         return answers;
     }
 
     public void setAnswers(List<Object> answers) {
         this.answers = answers;
-    }
+    }*/
 
     public Double getTs() {
         return ts;
@@ -95,12 +94,12 @@ public class GoogleSearchResponse {
         this.ts = ts;
     }
 
-    public Object getDeviceType() {
+    /*public Object getDeviceType() {
         return deviceType;
     }
 
     public void setDeviceType(Object deviceType) {
         this.deviceType = deviceType;
-    }
+    }*/
 
 }

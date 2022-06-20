@@ -44,7 +44,7 @@
                 tools:ignore="MissingConstraints">
 
                 <TextView
-                    android:id="@+id/activitiesLocationListTextView"
+                    android:id="@+id/titleListTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -55,7 +55,7 @@
                     tools:ignore="MissingConstraints" />
 
                 <TextView
-                    android:id="@+id/activitiesNameListTextView"
+                    android:id="@+id/websiteListTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
@@ -70,7 +70,7 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/viewActivityDetailsButton"
+                        android:id="@+id/viewBookDetailsButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -78,13 +78,13 @@
                         android:text="Details"
                         android:textAllCaps="false"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/saveActivityButton"
+                        app:layout_constraintEnd_toStartOf="@+id/saveBookButton"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
 
                     <Button
-                        android:id="@+id/saveActivityButton"
+                        android:id="@+id/saveBookButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="50dp"
@@ -94,7 +94,7 @@
                         android:textAllCaps="false"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/viewActivityDetailsButton"
+                        app:layout_constraintStart_toEndOf="@+id/viewBookDetailsButton"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
 

@@ -1,11 +1,5 @@
 package com.drusade.fanfictionbookclub.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,12 +9,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.drusade.fanfictionbookclub.R;
+import com.drusade.fanfictionbookclub.model.Result;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private TextView mProfNameTextView;
     private ImageView mProfPicImageView;
-    private Button mAddProfPicButton;
-    private SearchView mSearchView;
+    /*private Button mAddProfPicButton;*/
+    private Button mSearchButton;
     private RecyclerView mRecyclerView;
+    private List <Result> books;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mProfNameTextView = findViewById(R.id.profNameTextView);
         mProfPicImageView = findViewById(R.id.profPicImageView);
-        mAddProfPicButton = findViewById(R.id.addProfPicButton);
-        mSearchView = findViewById(R.id.searchView);
+        /*mAddProfPicButton = findViewById(R.id.addProfPicButton);*/
+        mSearchButton = findViewById(R.id.searchButton);
         mRecyclerView = findViewById(R.id.recyclerView);
 
         mAuth = FirebaseAuth.getInstance();
@@ -55,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+
+        mSearchButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override

@@ -8,9 +8,8 @@ import retrofit2.http.Query;
 
 public interface GoogleSearchApi {
 
-    @GET()
+    @GET("search/")
     Call<GoogleSearchResponse> getResult(
-            @Query("q") String character,
-            @Query("q") String fanfiction
+            @Query("q") String q
     );
 }
