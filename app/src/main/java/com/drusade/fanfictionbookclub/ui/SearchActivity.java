@@ -101,7 +101,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private void fetchBooks(String character){
         GoogleSearchApi client = GoogleSearchClient.getClient();
-        Call<GoogleSearchResponse> call = client.getResult(character + " " + "fanfiction");
+        Call<GoogleSearchResponse> call = client.getResult("q=" + character + " " + "fanfiction");
         call.enqueue(new Callback<GoogleSearchResponse>() {
             @Override
             public void onResponse(Call<GoogleSearchResponse> call, Response<GoogleSearchResponse> response) {
