@@ -21,36 +21,35 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultsViewHolder>{
-
+public class ImageResultsAdapter extends RecyclerView.Adapter<ImageResultsAdapter.ImageResultsViewHolder>{
     private Context mContext;
-    private List<Result> resultList;
+    private List<ImageResult> imageResultList;
 
-    public ResultsAdapter(Context mContext, List<Result> resultList) {
+    public ImageResultsAdapter(Context mContext, List<ImageResult> imageResultList) {
         this.mContext = mContext;
-        this.resultList = resultList;
+        this.imageResultList = imageResultList;
     }
 
     @NonNull
     @Override
-    public ResultsAdapter.ResultsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ImageResultsAdapter.ImageResultsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_list_item, parent, false);
-        ResultsViewHolder resultViewHolder = new ResultsViewHolder(view);
+        ImageResultsAdapter.ImageResultsViewHolder imageResultViewHolder = new ImageResultsAdapter.ImageResultsViewHolder(view);
 
-        return resultViewHolder;
+        return imageResultViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ResultsViewHolder holder, int position) {
-        holder.bindBook(resultList.get(position));
+    public void onBindViewHolder(@NonNull ImageResultsAdapter.ImageResultsViewHolder holder, int position) {
+        holder.bindImage(imageResultList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return resultList.size();
+        return imageResultList.size();
     }
 
-    public class ResultsViewHolder extends RecyclerView.ViewHolder {
+    public class ImageResultsViewHolder extends RecyclerView.ViewHolder {
         @SuppressLint("NonConstantResourceId")
         @BindView(R.id.img_book) ImageView mImg_book;
 
@@ -60,18 +59,14 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultsV
         @SuppressLint("NonConstantResourceId")
         @BindView(R.id.websiteListTextView) TextView mWebsiteListTextView;
 
-        public ResultsViewHolder(@NonNull View itemView) {
+        public ImageResultsViewHolder(@NonNull View itemView) {
             super(itemView);
-
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
         }
 
-        @SuppressLint("SetTextI18n")
-        public void bindBook(Result book) {
-            mTitleListTextView.setText("Title: " + book.getTitle());
-            mWebsiteListTextView.setText("Website: " + book.getLink());
-
+        public void bindImage(ImageResult imageResult) {
+            Picasso.get().load(String.valueOf(imageResult.getLink())).into(mImg_book);
         }
     }
 }

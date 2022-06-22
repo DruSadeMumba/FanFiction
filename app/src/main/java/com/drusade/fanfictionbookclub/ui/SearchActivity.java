@@ -1,9 +1,5 @@
 package com.drusade.fanfictionbookclub.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,14 +9,18 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.SearchView;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.drusade.fanfictionbookclub.Constants;
 import com.drusade.fanfictionbookclub.R;
+import com.drusade.fanfictionbookclub.adapters.ImageResultsAdapter;
 import com.drusade.fanfictionbookclub.adapters.ResultsAdapter;
 import com.drusade.fanfictionbookclub.model.GoogleSearchResponse;
+import com.drusade.fanfictionbookclub.model.ImageResult;
 import com.drusade.fanfictionbookclub.model.Result;
 import com.drusade.fanfictionbookclub.network.GoogleSearchApi;
 import com.drusade.fanfictionbookclub.network.GoogleSearchClient;
@@ -40,8 +40,10 @@ public class SearchActivity extends AppCompatActivity {
     private String mRecentCharacter;
 
     private static final String TAG = SearchActivity.class.getSimpleName();
-    private ResultsAdapter mAdapter;
+    private ResultsAdapter mResultsAdapter;
+    private ImageResultsAdapter mImageResultsAdapter;
     public List<Result> books;
+    public List<ImageResult> images;
 
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -56,6 +58,7 @@ public class SearchActivity extends AppCompatActivity {
         mRecentCharacter = mSharedPreferences.getString(Constants.PREFERENCES_CHARACTER_KEY, null);
         if(mRecentCharacter != null){
             fetchBooks(mRecentCharacter);
+            fetchImages(mRecentCharacter);
         }
     }
     @Override
@@ -75,6 +78,7 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String character) {
                 addToSharedPreferences(character);
                 fetchBooks(character);
+                fetchImages(character);
                 return false;
             }
             @Override
@@ -99,17 +103,17 @@ public class SearchActivity extends AppCompatActivity {
         mEditor.putString(Constants.PREFERENCES_CHARACTER_KEY, character).apply();
     }
 
-    private void fetchBooks(String character){
+    private void fetchImages(String character) {
         GoogleSearchApi client = GoogleSearchClient.getClient();
-        Call<GoogleSearchResponse> call = client.getResult("q=" + character + " " + "fanfiction");
+        Call<GoogleSearchResponse> call = client.getImageResult("q=" + character + " " + "fanfiction");
+
         call.enqueue(new Callback<GoogleSearchResponse>() {
             @Override
             public void onResponse(Call<GoogleSearchResponse> call, Response<GoogleSearchResponse> response) {
-
                 if (response.isSuccessful()) {
-                    books = response.body().getResults();
-                    mAdapter = new ResultsAdapter(SearchActivity.this, books);
-                    mRecyclerView.setAdapter(mAdapter);
+                    images = response.body().getImageResults();
+                    mImageResultsAdapter = new ImageResultsAdapter(SearchActivity.this, images);
+                    mRecyclerView.setAdapter(mImageResultsAdapter);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SearchActivity.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
@@ -119,7 +123,35 @@ public class SearchActivity extends AppCompatActivity {
 
                 }
             }
+            @Override
+            public void onFailure(Call<GoogleSearchResponse> call, Throwable t) {
+                Log.e(TAG, "onFailure: ",t );
 
+            }
+        });
+
+    }
+
+    private void fetchBooks(String character){
+        GoogleSearchApi client = GoogleSearchClient.getClient();
+        Call<GoogleSearchResponse> call = client.getResult("q=" + character + " " + "fanfiction");
+
+        call.enqueue(new Callback<GoogleSearchResponse>() {
+            @Override
+            public void onResponse(Call<GoogleSearchResponse> call, Response<GoogleSearchResponse> response) {
+                if (response.isSuccessful()) {
+                    books = response.body().getResults();
+                    mResultsAdapter = new ResultsAdapter(SearchActivity.this, books);
+                    mRecyclerView.setAdapter(mResultsAdapter);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SearchActivity.this);
+                    mRecyclerView.setLayoutManager(layoutManager);
+                    mRecyclerView.setHasFixedSize(true);
+
+                    showBooks();
+                } else {
+
+                }
+            }
             @Override
             public void onFailure(Call<GoogleSearchResponse> call, Throwable t) {
                 Log.e(TAG, "onFailure: ",t );
@@ -128,3 +160,5 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 }
+
+
