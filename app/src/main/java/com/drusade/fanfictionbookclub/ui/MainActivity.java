@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mProfPicImageView;
     /*private Button mAddProfPicButton;*/
     private Button mSearchButton;
-    private RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView1;
     private List <Result> books;
 
     @Override
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mProfPicImageView = findViewById(R.id.profPicImageView);
         /*mAddProfPicButton = findViewById(R.id.addProfPicButton);*/
         mSearchButton = findViewById(R.id.searchButton);
-        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView1 = findViewById(R.id.recyclerView1);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {

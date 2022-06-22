@@ -47,6 +47,7 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultsV
 
     @Override
     public int getItemCount() {
+
         return resultList.size();
     }
 
@@ -59,6 +60,8 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultsV
 
         @SuppressLint("NonConstantResourceId")
         @BindView(R.id.websiteListTextView) TextView mWebsiteListTextView;
+
+        private Context mContext;
 
         public ResultsViewHolder(@NonNull View itemView) {
             super(itemView);
