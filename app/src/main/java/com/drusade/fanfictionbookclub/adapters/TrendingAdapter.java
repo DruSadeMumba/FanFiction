@@ -2,6 +2,7 @@ package com.drusade.fanfictionbookclub.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.drusade.fanfictionbookclub.R;
 import com.drusade.fanfictionbookclub.model.Result;
+import com.drusade.fanfictionbookclub.ui.TrendingDetailActivity;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -23,9 +27,9 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.Trendi
     private Context mContext;
     private List<Result> trendingList;
 
-    public TrendingAdapter(Context mContext, List<Result> trendingList) {
+    public TrendingAdapter(Context mContext, List<Result> trending) {
         this.mContext = mContext;
-        this.trendingList = trendingList;
+        trendingList = trending;
     }
 
     @NonNull
@@ -52,13 +56,18 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.Trendi
         @SuppressLint("NonConstantResourceId")
         @BindView(R.id.titleTextView2) TextView mTitleTextView2;
 
-        private Context mContext;
-
         public TrendingViewHolder(@NonNull View itemView) {
             super(itemView);
-
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+
+            itemView.setOnClickListener(v -> {
+                int itemPosition = getLayoutPosition();
+                Intent intent = new Intent(mContext, TrendingDetailActivity.class);
+                intent.putExtra("position", itemPosition);
+                intent.putExtra("trendingList", Parcels.wrap(trendingList));
+                mContext.startActivity(intent);
+            });
         }
 
         @SuppressLint("SetTextI18n")

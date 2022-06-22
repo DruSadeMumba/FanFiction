@@ -39,10 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView mProfNameTextView;
     private TextView mProfEmailTextView;
     private ImageView mProfPicImageView;
-    /*private Button mAddProfPicButton;*/
     private Button mSearchButton;
     private RecyclerView mRecyclerView1;
-    private List <Result> books;
+    private List <Result> cites;
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private TrendingAdapter mTrendingAdapter;
@@ -56,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         mProfNameTextView = findViewById(R.id.profNameTextView);
         mProfPicImageView = findViewById(R.id.profPicImageView);
         mProfEmailTextView = findViewById(R.id.profEmailTextView);
-        /*mAddProfPicButton = findViewById(R.id.addProfPicButton);*/
         mSearchButton = findViewById(R.id.searchButton);
         mRecyclerView1 = findViewById(R.id.recyclerView1);
         fetchBooks();
@@ -129,8 +127,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GoogleSearchResponse> call, Response<GoogleSearchResponse> response) {
                 if (response.isSuccessful()) {
-                    books = response.body().getResults();
-                    mTrendingAdapter = new TrendingAdapter(MainActivity.this, books);
+                    cites = response.body().getResults();
+                    mTrendingAdapter = new TrendingAdapter(MainActivity.this, cites);
                     mRecyclerView1.setAdapter(mTrendingAdapter);
 
                     /*GridLayoutManager layoutManager = new GridLayoutManager(MainActivity.this, 2, GridLayoutManager.VERTICAL, false);*/

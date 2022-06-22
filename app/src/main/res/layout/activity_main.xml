@@ -10,10 +10,10 @@
 
     <ImageView
         android:id="@+id/profPicImageView"
-        android:layout_width="150dp"
+        android:layout_width="160dp"
         android:layout_height="150dp"
         android:background="@drawable/img_bg"
-        android:src="@drawable/ic_baseline_person_outline_24"
+        android:src="@drawable/ppic_removebg_preview"
         app:layout_constraintBottom_toTopOf="@+id/searchButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,34 +21,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addProfPicButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimaryLight"
-        android:elevation="5dp"
-        android:src="@drawable/ic_baseline_add_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.264"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
-
     <TextView
         android:id="@+id/profNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
         android:text="Your name"
         android:textColor="@color/colorTextIcons"
-        android:fontFamily="@font/poppins"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/searchButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintHorizontal_bias="0.743"
         app:layout_constraintStart_toEndOf="@+id/profPicImageView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.484" />
+        app:layout_constraintVertical_bias="0.491" />
 
     <TextView
         android:id="@+id/profEmailTextView"
@@ -60,10 +46,9 @@
         android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintHorizontal_bias="0.849"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/searchButton"
