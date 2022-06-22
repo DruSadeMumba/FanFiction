@@ -45,6 +45,7 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultsV
 
     @Override
     public int getItemCount() {
+
         return resultList.size();
     }
 

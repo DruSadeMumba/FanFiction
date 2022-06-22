@@ -1,5 +1,7 @@
 package com.drusade.fanfictionbookclub.network;
 
+import android.media.Image;
+
 import com.drusade.fanfictionbookclub.model.GoogleSearchResponse;
 
 import retrofit2.Call;
@@ -12,4 +14,9 @@ public interface GoogleSearchApi {
             @Path("q") String q
 
     );
+    @GET("image/{q}")
+    Call<GoogleSearchResponse> getImageResult(
+            @Path("q") String q
+            );
+
 }

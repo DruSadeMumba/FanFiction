@@ -16,16 +16,16 @@ public class GoogleSearchResponse {
     @SerializedName("ts")
     @Expose
     private Double ts;
-    /*@SerializedName("image_results")
+    @SerializedName("image_results")
     @Expose
-    private List<Object> imageResults = null;*/
+    private List<ImageResult> imageResults = null;
     @SerializedName("total")
     @Expose
     private Integer total;
     /*@SerializedName("answers")
     @Expose
-    private List<Object> answers = null;
-    @SerializedName("device_type")
+    private List<Object> answers = null;*/
+    /*@SerializedName("device_type")
     @Expose
     private Object deviceType;*/
 
@@ -37,21 +37,22 @@ public class GoogleSearchResponse {
     }
 
     /**
-     * 
-
+     *
+     * @param //deviceType
      * @param total
-
+     * @param imageResults
+     * @param //answers
      * @param results
      * @param ts
      */
-    public GoogleSearchResponse(List<Result> results/*, List<Object> imageResults*/, Integer total/*, List<Object> answers*/, Double ts/*, Object deviceType*/) {
+    public GoogleSearchResponse(List<Result> results, List<ImageResult> imageResults, Integer total, List<Object> answers, Double ts, Object deviceType) {
         super();
         this.results = results;
-        /*this.imageResults = imageResults;*/
+        this.imageResults = imageResults;
         this.total = total;
         this.ts = ts;
-        /*this.answers = answers;
-        this.deviceType = deviceType;*/
+        /*this.answers = answers;*/
+        /*this.deviceType = deviceType;*/
     }
 
     public List<Result> getResults() {
@@ -62,13 +63,13 @@ public class GoogleSearchResponse {
         this.results = results;
     }
 
-    /*public List<Object> getImageResults() {
+    public List<ImageResult> getImageResults() {
         return imageResults;
     }
 
-    public void setImageResults(List<Object> imageResults) {
+    public void setImageResults(List<ImageResult> imageResults) {
         this.imageResults = imageResults;
-    }*/
+    }
 
     public Integer getTotal() {
         return total;
@@ -101,5 +102,4 @@ public class GoogleSearchResponse {
     public void setDeviceType(Object deviceType) {
         this.deviceType = deviceType;
     }*/
-
 }
