@@ -20,57 +20,55 @@ import org.parceler.Parcels;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TrendingDetailFragment extends Fragment {
+public class DetailFragment extends Fragment {
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.trendingDetailTitle) TextView mTrendingDetailTitle;
+    @BindView(R.id.detailTitle) TextView mDetailTitle;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.trendingDetailLink) TextView mTrendingDetailLink;
+    @BindView(R.id.detailLink) TextView mDetailLink;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.trendingDetailDescription) TextView mTrendingDetailDescription;
+    @BindView(R.id.detailDescription) TextView mDetailDescription;
 
-    private Result mTrendingResult;
+    private Result mResult;
 
-    public TrendingDetailFragment() {
+    public DetailFragment() {
 
     }
 
-    public static TrendingDetailFragment newInstance(Result result) {
-        TrendingDetailFragment fragment = new TrendingDetailFragment();
+    public static DetailFragment newInstance(Result result) {
+        DetailFragment detailFragment = new DetailFragment();
         Bundle args = new Bundle();
         args.putParcelable("result", Parcels.wrap(result));
-        fragment.setArguments(args);
-        return fragment;
+        detailFragment.setArguments(args);
+        return detailFragment;
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         assert getArguments() != null;
-        mTrendingResult = Parcels.unwrap(getArguments().getParcelable("result"));
+        mResult = Parcels.unwrap(getArguments().getParcelable("result"));
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_trending_detail, container, false);
+        View v = inflater.inflate(R.layout.fragment_detail, container, false);
+        ButterKnife.bind(this, v);
 
-        ButterKnife.bind(this, view);
+        mDetailTitle.setText(mResult.getTitle());
+        mDetailLink.setText(mResult.getLink());
+        mDetailDescription.setText(mResult.getDescription());
 
-        mTrendingDetailTitle.setText(mTrendingResult.getTitle());
-        mTrendingDetailLink.setText(mTrendingResult.getLink());
-        mTrendingDetailDescription.setText(mTrendingResult.getDescription());
-
-        mTrendingDetailLink.setOnClickListener(v -> {
+        mDetailLink.setOnClickListener(view -> {
             Intent webIntent = new Intent (Intent.ACTION_VIEW,
-                    Uri.parse(mTrendingResult.getLink()));
+                    Uri.parse(mResult.getLink()));
             startActivity(webIntent);
         });
 
-        return view;
+        return v;
     }
 }

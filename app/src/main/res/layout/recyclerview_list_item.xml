@@ -23,7 +23,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorSecondaryLight"
+            android:background="@color/colorTextIcons"
             android:orientation="horizontal">
 
             <ImageView
@@ -31,14 +31,14 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center"
-                android:padding="10dp"
-                android:src="@drawable/ic_baseline_library_books_24" />
+                android:padding="5dp"
+                android:src="@drawable/main" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorSecondaryText"
+                android:background="@color/colorPrimaryText"
                 android:orientation="vertical"
                 android:padding="10dp"
                 tools:ignore="MissingConstraints">
@@ -50,19 +50,8 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins"
                     android:text="Title"
-                    android:textColor="@color/colorPrimaryText"
+                    android:textColor="@color/colorSecondaryLight"
                     android:textSize="25sp"
-                    tools:ignore="MissingConstraints" />
-
-                <TextView
-                    android:id="@+id/websiteListTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:text="website"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="25sp"
-                    app:layout_constraintBottom_toTopOf="@+id/activitiesLocationListTextView"
                     tools:ignore="MissingConstraints" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -70,31 +59,15 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/viewBookDetailsButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:fontFamily="@font/poppins"
-                        android:text="Details"
-                        android:textAllCaps="false"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/saveBookButton"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0" />
-
-                    <Button
                         android:id="@+id/saveBookButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
-                        android:layout_marginEnd="20dp"
                         android:fontFamily="@font/poppins"
                         android:text="Save"
                         android:textAllCaps="false"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/viewBookDetailsButton"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
 

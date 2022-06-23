@@ -58,7 +58,7 @@ public class SearchActivity extends AppCompatActivity {
         mRecentCharacter = mSharedPreferences.getString(Constants.PREFERENCES_CHARACTER_KEY, null);
         if(mRecentCharacter != null){
             fetchBooks(mRecentCharacter);
-            fetchImages(mRecentCharacter);
+            /*fetchImages(mRecentCharacter);*/
         }
     }
     @Override
@@ -78,7 +78,7 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String character) {
                 addToSharedPreferences(character);
                 fetchBooks(character);
-                fetchImages(character);
+                /*fetchImages(character);*/
                 return false;
             }
             @Override
@@ -103,7 +103,7 @@ public class SearchActivity extends AppCompatActivity {
         mEditor.putString(Constants.PREFERENCES_CHARACTER_KEY, character).apply();
     }
 
-    private void fetchImages(String character) {
+    /*private void fetchImages(String character) {
         GoogleSearchApi client = GoogleSearchClient.getClient();
         Call<GoogleSearchResponse> call = client.getImageResult("q=" + character + " " + "fanfiction");
 
@@ -130,7 +130,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
 
     private void fetchBooks(String character){
         GoogleSearchApi client = GoogleSearchClient.getClient();

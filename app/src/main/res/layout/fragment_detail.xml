@@ -3,32 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.TrendingDetailFragment">
+    tools:context=".ui.fragments.DetailFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/trendingDetailTitle"
+            android:id="@+id/detailTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Title"
             android:textSize="40dp"/>
 
         <TextView
-            android:id="@+id/trendingDetailLink"
+            android:id="@+id/detailLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/trendingDetailTitle"
+            android:layout_below="@+id/detailTitle"
             android:text="Link"
             android:textSize="30dp"/>
 
         <TextView
-            android:id="@+id/trendingDetailDescription"
+            android:id="@+id/detailDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/trendingDetailLink"
+            android:layout_below="@+id/detailLink"
             android:text="Description"
             android:textSize="25dp"/>
 

@@ -25,6 +25,7 @@ public class Result {
     @SerializedName("cite")
     @Expose
     private Cite cite;
+    private String pushId;
 
     /**
      * No args constructor for use in serialization
@@ -48,7 +49,9 @@ public class Result {
         this.description = description;
         this.additionalLinks = additionalLinks;
         this.cite = cite;
+        this.pushId = pushId;
     }
+
 
     public String getTitle() {
         return title;
@@ -90,4 +93,11 @@ public class Result {
         this.cite = cite;
     }
 
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 }

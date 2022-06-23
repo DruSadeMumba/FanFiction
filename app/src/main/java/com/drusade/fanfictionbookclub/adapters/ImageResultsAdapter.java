@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.drusade.fanfictionbookclub.R;
 import com.drusade.fanfictionbookclub.model.ImageResult;
-import com.drusade.fanfictionbookclub.model.Result;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -56,9 +55,6 @@ public class ImageResultsAdapter extends RecyclerView.Adapter<ImageResultsAdapte
         @SuppressLint("NonConstantResourceId")
         @BindView(R.id.titleListTextView) TextView mTitleListTextView;
 
-        @SuppressLint("NonConstantResourceId")
-        @BindView(R.id.websiteListTextView) TextView mWebsiteListTextView;
-
         public ImageResultsViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -66,7 +62,7 @@ public class ImageResultsAdapter extends RecyclerView.Adapter<ImageResultsAdapte
         }
 
         public void bindImage(ImageResult imageResult) {
-            Picasso.get().load(String.valueOf(imageResult.getLink())).into(mImg_book);
+            Picasso.get().load(String.valueOf(imageResult.getImage())).into(mImg_book);
         }
     }
 }
