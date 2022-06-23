@@ -1,37 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.TrendingDetailFragment">
+    tools:context=".ui.fragments.TrendingDetailFragment"
+    android:background="@color/colorPrimaryDark">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/trendingDetailTitle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:text="Title"
-            android:textSize="40dp"/>
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/colorDivider"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="5dp"
+            app:layout_constraintVertical_bias="0.05" />
 
-        <TextView
-            android:id="@+id/trendingDetailLink"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/trendingDetailTitle"
-            android:text="Link"
-            android:textSize="30dp"/>
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trendingDetailTitle"
+            app:layout_constraintVertical_bias="0.0"
+            app:cardBackgroundColor="@color/colorPrimaryDark"
+            app:cardCornerRadius="10dp">
 
-        <TextView
-            android:id="@+id/trendingDetailDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/trendingDetailLink"
-            android:text="Description"
-            android:textSize="25dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryText">
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/trendingDetailLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:textColor="@color/colorSecondaryLight"
+                    android:layout_below="@id/trendingDetailDescription"
+                    android:fontFamily="@font/poppins"
+                    android:text="Link"
+                    android:textSize="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="50dp"/>
+
+                    <TextView
+                        android:id="@+id/trendingDetailDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/colorTextIcons"
+                        android:text="Description"
+                        android:textSize="20dp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
